@@ -1,0 +1,41 @@
+{
+    "models": [{"model_type": "2_layer_CNN", "params": {"n1": 128, "n2": 256, "dropout_rate": 0.2,"fc": 289}},
+               {"model_type": "2_layer_CNN", "params": {"n1": 128, "n2": 384, "dropout_rate": 0.2,"fc": 289}},
+               {"model_type": "2_layer_CNN", "params": {"n1": 128, 'n2': 512, "dropout_rate": 0.2,"fc": 289}},
+               {"model_type": "2_layer_CNN", "params": {"n1": 256, "n2": 256, "dropout_rate": 0.3,"fc": 289}},
+               {"model_type": "2_layer_CNN", "params": {"n1": 256, "n2": 512, "dropout_rate": 0.4,"fc": 289}},
+               {"model_type": "3_layer_CNN", "params": {"n1": 64, "n2": 128, "n3": 256, "dropout_rate": 0.2,"fc": 100}},
+               {"model_type": "3_layer_CNN", "params": {"n1": 64, "n2": 128, "n3": 192, "dropout_rate": 0.2,"fc": 100}},
+               {"model_type": "3_layer_CNN", "params": {"n1": 128, "n2": 192, "n3": 256, "dropout_rate": 0.2,"fc": 100}},
+               {"model_type": "3_layer_CNN", "params": {"n1": 128, "n2": 128, "n3": 128, "dropout_rate": 0.3,"fc": 100}},
+               {"model_type": "3_layer_CNN", "params": {"n1": 128, "n2": 128, "n3": 192, "dropout_rate": 0.3,"fc": 100}}
+              ],
+    "pre_train_params": {"min_delta": 0.005, "patience": 3,'num_workers': 16,
+                     "batch_size": 128, "epochs": 20, "is_shuffle": True},
+
+    "model_init_params": {"min_delta": 0.001, "patience": 10,'num_workers': 8,
+                   "batch_size": 32, "epochs":25, "is_shuffle": True},
+
+    "calculate_theoretical_upper_bounds_params": {"min_delta": 0.001, "patience": 10,
+                   "batch_size": 32, "epochs": 50, "is_shuffle": True,'num_workers':8},
+
+    "model_saved_dir": '../pretained_model',
+    "model_saved_names" : ["CNN_128_256", "CNN_128_384", "CNN_128_512", "CNN_256_256", "CNN_256_512", 
+                    "CNN_64_128_256", "CNN_64_128_192", "CNN_128_192_256", "CNN_128_128_128", "CNN_128_128_192"],
+    "early_stopping" : False,
+    "N_parties": 10,
+    "N_samples_per_class": 20,
+
+    "private_classes": [0,1,7,9,12,18],
+    "public_classes": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "is_show": False,
+
+    "FedMD_params": {"N_rounds": 13, "N_alignment": 5000,
+    "N_logits_matching_round": 1,
+    "N_private_training_round": 10,
+    "private_training_batchsize" : 10,
+    "logits_matching_batchsize": 128
+    },
+    "EMNIST_dir": None,
+    "result_save_dir": "../save"
+}
